@@ -57,3 +57,5 @@ categories:
     description: "Web application testing"
   - name: wireless
     description: "Wireless attacks"
+  - name: steganography
+    description: "Steganography tools"

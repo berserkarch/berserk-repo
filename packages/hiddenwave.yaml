@@ -1,0 +1,5 @@
+tools:
+  - name: hiddenwave
+    description: "Audio Steganography Tool in Rust"
+    category: [crypto, steganography]
+    installer: cargo

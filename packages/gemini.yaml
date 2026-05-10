@@ -1,0 +1,7 @@
+tools:
+  - name: gemini-cli
+    description: "Gemini LLM Cli"
+    category: [web]
+    profiles: [web]
+    installer: npm
+    package: "@google/gemini-cli"

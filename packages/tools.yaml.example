@@ -80,6 +80,7 @@ tools:
     category: [web]
     profiles: [web]
     installer: npm
+    package: "@google/gemini" # if not specified defaults to name
 
   # ─────────────────────────────────────────────────────────────────────
   # binary — pulls a release asset from GitHub. Needs `repo` and almost

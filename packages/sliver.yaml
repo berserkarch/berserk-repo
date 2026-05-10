@@ -1,0 +1,7 @@
+tools:
+  - name: sliver
+    description: "Adversary simulation C2 framework"
+    category: [post-exploitation, c2]
+    profiles: [c2, post-exploitation]
+    installer: custom
+    steps: ["curl https://sliver.sh/install|sudo bash"]

@@ -252,12 +252,6 @@ tools:
     profiles: [recon]
     installer: go
     repo: projectdiscovery/alterx/cmd/alterx
-  - name: sliver
-    description: "Adversary simulation C2 framework"
-    category: [post-exploitation, c2]
-    profiles: [c2, post-exploitation]
-    installer: custom
-    steps: ["curl https://sliver.sh/install|sudo bash"]
   - name: frp
     description: "Fast reverse proxy for NAT traversal and tunneling"
     category: [post-exploitation, pivoting]

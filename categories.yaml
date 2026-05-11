@@ -59,3 +59,5 @@ categories:
     description: "Wireless attacks"
   - name: steganography
     description: "Steganography tools"
+  - name: llm
+    description: "LLM related tools"

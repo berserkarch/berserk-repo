@@ -1,0 +1,6 @@
+tools:
+  - name: claude-code
+    description: "Claude Code LLM Cli"
+    category: [llm]
+    installer: custom
+    steps: ["curl -fsSL https://claude.ai/install.sh | bash"]

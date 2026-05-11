@@ -1,0 +1,6 @@
+tools:
+  - name: codex
+    description: "ChatGPT codex LLM Cli"
+    category: [llm]
+    installer: npm
+    package: "@openai/codex@latest"

@@ -61,3 +61,7 @@ categories:
     description: "Steganography tools"
   - name: llm
     description: "LLM related tools"
+  - name: linux-cli
+    description: "CLI based linux containers"
+  - name: linux-gui
+    description: "GUI based linux containers"

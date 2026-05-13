@@ -1,0 +1,12 @@
+- name: "kasm"
+  description: "Kasm Workspaces via Docker Container for GUI Apps"
+  category: ["linuxserver", "webapp"]
+  command: "docker pull lscr.io/linuxserver/kali-linux:latest"
+  run: "docker run -d --name=kasm --privileged -e KASM_PORT=443 -p 3000:3000 -p 443:443 -v ~/berserk/containers/kasm/data:/opt -v ~/berserk/containers/kasm/profiles:/profiles --restart unless-stopped lscr.io/linuxserver/kasm:latest"
+  runtime_comments:
+    - "- To stop the container run: docker stop kasm"
+    - "- Access admin at: https://localhost:3000/"
+    - "- Access kasm at: https://localhost/"
+    - "- Access via shell: docker exec -it kasm /bin/bash"
+    - "- More Info: https://github.com/linuxserver/docker-kasm"
+    - "- Default Users: 'admin@kasm.local', 'user@kasm.local'"

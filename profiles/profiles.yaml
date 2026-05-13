@@ -27,9 +27,6 @@ profiles:
     description: "Privilege escalation enumeration and exploitation"
   - name: recon
     description: "Reconnaissance and asset discovery"
-  - name: red-team
-    description: "Composed engagement profile (AD + web + post-ex + creds)"
-    includes: [ad-attacks, credentials, post-exploitation, web]
   - name: reversing
     description: "Reverse engineering and binary analysis"
   - name: web

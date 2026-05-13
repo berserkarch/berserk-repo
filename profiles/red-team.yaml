@@ -1,0 +1,4 @@
+profiles:
+  - name: red-team
+    description: "Composed engagement profile (AD + web + post-ex + creds)"
+    includes: [ad-attacks, credentials, post-exploitation, web]

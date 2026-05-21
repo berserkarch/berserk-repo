@@ -1,0 +1,21 @@
+tools:
+  - name: caido-desktop
+    description: "A lightweight web security auditing toolkit."
+    category: [web]
+    installer: custom
+    depends:
+      arch:
+        - glibc
+        - gcc-libs
+    steps:
+      - 'wget "$(curl -s https://api.github.com/repos/caido/caido/releases/latest | jq -r ''.body'' | grep ''Linux x86_64 (AppImage)'' | grep -o ''https://[^)]*'')" -O /tmp/caido-desktop.AppImage'
+      - "chmod +x /tmp/caido-desktop.AppImage"
+      - "cd /tmp && ./caido-desktop.AppImage --appimage-extract"
+      - "sudo rm -rf /opt/caido-desktop"
+      - "sudo mv /tmp/squashfs-root /opt/caido-desktop"
+      - "sudo chmod -R 755 /opt/caido-desktop"
+      - "sudo ln -sf /opt/caido-desktop/caido /usr/local/bin/caido"
+      - "sudo mkdir -p /usr/share/applications /usr/share/icons/hicolor/256x256/apps"
+      - "sudo sed -i 's|Exec=AppRun --no-sandbox %U|Exec=caido|' /opt/caido-desktop/caido.desktop"
+      - "sudo cp /opt/caido-desktop/caido.desktop /usr/share/applications/caido.desktop"
+      - "sudo cp /opt/caido-desktop/caido.png /usr/share/icons/hicolor/256x256/apps/caido.png"

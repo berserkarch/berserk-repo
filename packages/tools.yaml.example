@@ -21,6 +21,9 @@ tools:
     installer: pipx                   # REQUIRED — pipx | go | cargo | gem | npm | binary | system | custom
     repo: owner/example-tool          # installer-specific (see below) — always GitHub owner/name
     package: example-tool             # installer-specific (see below)
+    depends:                          # OPTIONAL — system packages required to install/run
+      arch: [openssl, pkgconf]        # pacman packages
+      debian: [libssl-dev, pkg-config] # apt packages
 
   # ─────────────────────────────────────────────────────────────────────
   # pipx — Python tools. Either `repo` (installs from git+https://github.com/...)
@@ -33,6 +36,9 @@ tools:
     aliases: [nxc]
     installer: pipx
     repo: Pennyw0rth/NetExec           # → git+https://github.com/Pennyw0rth/NetExec
+    depends:
+      arch: [openssl, pkgconf]
+      debian: [libssl-dev, pkg-config]
 
   - name: theharvester
     description: "Email/subdomain harvester"

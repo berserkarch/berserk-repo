@@ -18,8 +18,9 @@ tools:
     category: [recon, web]            # OPTIONAL — must reference categories.yaml entries
     profiles: [recon, red-team]       # OPTIONAL — must reference profiles.yaml entries
     aliases: [exa, ext]               # OPTIONAL — `berserk install exa` resolves to example-tool
-    installer: pipx                   # REQUIRED — pipx | go | cargo | gem | npm | binary | system | custom
+    installer: pipx                   # REQUIRED — pipx | go | cargo | gem | npm | binary | system | custom | git
     repo: owner/example-tool          # installer-specific (see below) — always GitHub owner/name
+    branch: main                      # OPTIONAL — git-only; defaults to repo default branch
     package: example-tool             # installer-specific (see below)
     depends:                          # OPTIONAL — system packages required to install/run
       arch: [openssl, pkgconf]        # pacman packages
@@ -135,3 +136,20 @@ tools:
       - "wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz -O /tmp/bloodhound-cli-linux-amd64.tar.gz"
       - "tar -xzf /tmp/bloodhound-cli-linux-amd64.tar.gz -C /tmp"
       - "sudo mv /tmp/bloodhound-cli /usr/local/bin/"
+
+  # ─────────────────────────────────────────────────────────────────────
+  # git — clones a repo into /opt/berserk/<name>. Needs `repo` (GitHub
+  # owner/repo shorthand or a full URL). `branch` is optional and
+  # defaults to the repo's default branch.
+  # Update runs `git pull --ff-only`. Remove deletes the cloned dir.
+  # Run `berserk doctor` first — it creates /opt/berserk and chowns it
+  # to the current user so no sudo is needed for clone/pull/remove.
+  # ─────────────────────────────────────────────────────────────────────
+  - name: sharpcollection
+    description: "Precompiled .NET offensive tools (Seatbelt, SharpHound, Rubeus, etc.)"
+    category: [post-exploitation, exploitation, ad]
+    profiles: [post-exploitation, ad-attacks]
+    installer: git
+    repo: flangvik/SharpCollection      # → https://github.com/flangvik/SharpCollection
+    # branch: main                      # optional — pin a specific branch or tag
+    # repo: https://gitlab.com/org/repo # full URLs are also accepted

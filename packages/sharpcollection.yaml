@@ -1,0 +1,7 @@
+tools:
+  - name: sharpcollection
+    description: "Precompiled .NET offensive tools (Seatbelt, SharpHound, Rubeus, etc.)"
+    category: [post-exploitation, exploitation, ad]
+    profiles: [post-exploitation, ad-attacks]
+    installer: git
+    repo: flangvik/SharpCollection

@@ -1,0 +1,7 @@
+tools:
+  - name: pywhisker
+    description: "Python version of the C# tool for 'Shadow Credentials' attacks"
+    category: [ad, shadow-creds, exploitation]
+    profiles: [ad-attacks]
+    installer: pipx
+    repo: ShutdownRepo/pywhisker

@@ -1,0 +1,7 @@
+tools:
+  - name: nishang
+    description: "Nishang - Offensive PowerShell for red team, penetration testing and offensive security."
+    category: [ad]
+    profiles: [ad-attacks]
+    installer: git
+    repo: samratashok/nishang

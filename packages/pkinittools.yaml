@@ -1,0 +1,7 @@
+tools:
+  - name: pkinittools
+    description: "Tools for Kerberos PKINIT and relaying to AD CS"
+    category: [ad, kerberos]
+    profiles: [ad-attacks]
+    installer: git
+    repo: dirkjanm/PKINITtools

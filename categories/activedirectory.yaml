@@ -1,3 +1,5 @@
 categories:
   - name: shadow-creds
     description: "Shadow credential attack"
+  - name: kerberos
+    description: "Kerberos Attacks"

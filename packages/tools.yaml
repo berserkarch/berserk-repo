@@ -290,12 +290,6 @@ tools:
     profiles: [forensics, malware-dev, reversing]
     installer: pipx
     repo: ReFirmLabs/binwalk
-  - name: krbrelayx
-    description: "Kerberos relay attacks (Unconstrained Delegation, RBCD)"
-    category: [ad, lateral-movement]
-    profiles: [ad-attacks]
-    installer: pipx
-    repo: dirkjanm/krbrelayx
   - name: msldap
     description: "Async Python LDAP/MS-LDAP library and CLI"
     category: [ad, recon]

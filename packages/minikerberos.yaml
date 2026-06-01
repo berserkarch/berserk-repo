@@ -1,0 +1,7 @@
+tools:
+  - name: minikerberos
+    description: "Kerberos manipulation library in pure Python"
+    category: [ad, kerberos]
+    profiles: [ad-attacks]
+    installer: pipx
+    repo: skelsec/minikerberos

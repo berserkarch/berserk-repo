@@ -1,0 +1,7 @@
+tools:
+  - name: krbrelayx
+    description: "Kerberos relay attacks (Unconstrained Delegation, RBCD)"
+    category: [ad, lateral-movement, kerberos]
+    profiles: [ad-attacks]
+    installer: git
+    repo: dirkjanm/krbrelayx

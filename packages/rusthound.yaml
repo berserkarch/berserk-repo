@@ -1,0 +1,10 @@
+tools:
+  - name: rusthound
+    description: "Active Directory data ingestor for BloodHound Legacy written in Rust. 🦀"
+    category: [ad]
+    profiles: [ad-attacks]
+    installer: cargo
+    depends:
+      arch:
+        - clang
+        - llvm

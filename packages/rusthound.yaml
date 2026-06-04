@@ -1,5 +1,5 @@
 tools:
-  - name: rusthound
+  - name: rusthound-ce
     description: "Active Directory data ingestor for BloodHound Legacy written in Rust. 🦀"
     category: [ad]
     profiles: [ad-attacks]

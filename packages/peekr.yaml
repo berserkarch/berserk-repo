@@ -1,0 +1,6 @@
+tools:
+  - name: peekr
+    description: "Network Monitor TUI"
+    category: [network]
+    installer: go
+    repo: thehackersbrain/peekr

@@ -6,6 +6,7 @@ tools:
     installer: git
     repo: dirkjanm/krbrelayx
     runtime: python
+    pip_deps: [impacket, ldap3]
     entry_scripts:
       - addspn.py
       - dnstool.py

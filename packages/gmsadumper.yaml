@@ -1,0 +1,9 @@
+tools:
+  - name: gmsadumper
+    description: "Lists who can read any gMSA password blobs and parses them if the current user has access."
+    category: [ad, credentials, password-attacks]
+    profiles: [ad-attacks]
+    installer: git
+    repo: micahvandeusen/gMSADumper
+    entry_script: gMSADumper.py
+    runtime: python

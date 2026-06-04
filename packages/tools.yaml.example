@@ -144,7 +144,16 @@ tools:
   # Update runs `git pull --ff-only`. Remove deletes the cloned dir.
   # Run `berserk doctor` first — it creates /opt/berserk and chowns it
   # to the current user so no sudo is needed for clone/pull/remove.
+  #
+  # For repos that are bare Python scripts (no setup.py / pyproject.toml),
+  # add `entry_script` and `runtime: python`. berserk will:
+  #   1. Create a venv at /opt/berserk/venvs/<name>
+  #   2. Install deps from requirements.txt (if present) AND pip_deps (if any)
+  #   3. Write a shim to /opt/berserk/bin/<name> that calls the script in the venv
+  # berserk doctor also creates /opt/berserk/bin and adds it to PATH.
   # ─────────────────────────────────────────────────────────────────────
+
+  # Plain git clone — no script invocation needed (pre-built binaries, .NET assemblies, etc.)
   - name: sharpcollection
     description: "Precompiled .NET offensive tools (Seatbelt, SharpHound, Rubeus, etc.)"
     category: [post-exploitation, exploitation, ad]
@@ -153,3 +162,15 @@ tools:
     repo: flangvik/SharpCollection      # → https://github.com/flangvik/SharpCollection
     # branch: main                      # optional — pin a specific branch or tag
     # repo: https://gitlab.com/org/repo # full URLs are also accepted
+
+  # git + Python script — bare .py tool with a requirements.txt
+  - name: targetedkerberoast
+    description: "Kerberoast accounts with no SPN set by adding a temporary SPN, then removing it"
+    category: [ad, credentials, password-attacks]
+    profiles: [ad-attacks]
+    installer: git
+    repo: ShutdownRepo/targetedKerberoast
+    entry_script: targetedKerberoast.py  # script to invoke; shim lands at /opt/berserk/bin/<name>
+    runtime: python                      # REQUIRED when entry_script is set; only python supported
+    # pip_deps: [impacket, ldap3]        # additive on top of requirements.txt — use when reqs file
+    #                                    # is absent or incomplete

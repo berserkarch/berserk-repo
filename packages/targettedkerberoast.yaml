@@ -1,0 +1,9 @@
+tools:
+  - name: targetedkerberoast
+    description: "Kerberoast accounts with no SPN set by adding a temporary SPN, then removing it"
+    category: [ad, credentials, password-attacks]
+    profiles: [ad-attacks]
+    installer: git
+    repo: ShutdownRepo/targetedKerberoast
+    entry_script: targetedKerberoast.py
+    runtime: python

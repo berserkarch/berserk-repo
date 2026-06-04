@@ -146,10 +146,10 @@ tools:
   # to the current user so no sudo is needed for clone/pull/remove.
   #
   # For repos that are bare Python scripts (no setup.py / pyproject.toml),
-  # add `entry_script` and `runtime: python`. berserk will:
+  # add `entry_scripts` (list) and `runtime: python`. berserk will:
   #   1. Create a venv at /opt/berserk/venvs/<name>
   #   2. Install deps from requirements.txt (if present) AND pip_deps (if any)
-  #   3. Write a shim to /opt/berserk/bin/<name> that calls the script in the venv
+  #   3. Write one shim per script: foo.py → /opt/berserk/bin/foo
   # berserk doctor also creates /opt/berserk/bin and adds it to PATH.
   # ─────────────────────────────────────────────────────────────────────
 
@@ -163,14 +163,24 @@ tools:
     # branch: main                      # optional — pin a specific branch or tag
     # repo: https://gitlab.com/org/repo # full URLs are also accepted
 
-  # git + Python script — bare .py tool with a requirements.txt
+  # git + Python script — single bare .py tool with a requirements.txt
   - name: targetedkerberoast
     description: "Kerberoast accounts with no SPN set by adding a temporary SPN, then removing it"
     category: [ad, credentials, password-attacks]
     profiles: [ad-attacks]
     installer: git
     repo: ShutdownRepo/targetedKerberoast
-    entry_script: targetedKerberoast.py  # script to invoke; shim lands at /opt/berserk/bin/<name>
-    runtime: python                      # REQUIRED when entry_script is set; only python supported
-    # pip_deps: [impacket, ldap3]        # additive on top of requirements.txt — use when reqs file
-    #                                    # is absent or incomplete
+    entry_scripts: [targetedKerberoast.py]  # each entry gets its own shim: foo.py → /opt/berserk/bin/foo
+    runtime: python                         # REQUIRED when entry_scripts is set; only python supported
+    # pip_deps: [impacket, ldap3]           # additive on top of requirements.txt
+
+  # git + Python script — multiple scripts from one repo
+  - name: pkinittools
+    description: "Python tools for Kerberos PKINIT and certificate-based authentication"
+    category: [ad, credentials]
+    profiles: [ad-attacks]
+    installer: git
+    repo: dirkjanm/PKINITtools
+    entry_scripts: [gettgtpkinit.py, gets4uticket.py, getnthash.py]
+    runtime: python
+    # pip_deps: [minikerberos, impacket]

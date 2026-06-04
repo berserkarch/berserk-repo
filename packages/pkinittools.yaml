@@ -5,3 +5,8 @@ tools:
     profiles: [ad-attacks]
     installer: git
     repo: dirkjanm/PKINITtools
+    runtime: python
+    entry_scripts:
+      - getnthash.py
+      - gets4uticket.py
+      - gettgtpkinit.py

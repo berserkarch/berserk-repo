@@ -5,5 +5,5 @@ tools:
     profiles: [ad-attacks]
     installer: git
     repo: ShutdownRepo/targetedKerberoast
-    entry_script: targetedKerberoast.py
+    entry_scripts: [targetedKerberoast.py]
     runtime: python

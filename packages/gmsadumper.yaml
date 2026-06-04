@@ -5,5 +5,5 @@ tools:
     profiles: [ad-attacks]
     installer: git
     repo: micahvandeusen/gMSADumper
-    entry_script: gMSADumper.py
+    entry_scripts: [gMSADumper.py]
     runtime: python

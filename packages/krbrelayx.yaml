@@ -5,3 +5,9 @@ tools:
     profiles: [ad-attacks]
     installer: git
     repo: dirkjanm/krbrelayx
+    runtime: python
+    entry_scripts:
+      - addspn.py
+      - dnstool.py
+      - krbrelayx.py
+      - printerbug.py

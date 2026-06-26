@@ -7,3 +7,6 @@ tools:
     steps:
       - "wget -O /tmp/pebear $(curl -s https://api.github.com/repos/hasherezade/pe-bear/releases/latest | jq -r '.assets[] | select(.name | endswith(\".AppImage\")) | .browser_download_url')"
       - "chmod +x /tmp/pebear && sudo mv /tmp/pebear /usr/local/bin/"
+      - "sudo mkdir -p /usr/local/share/applications"
+      - "printf '[Desktop Entry]\nName=PE-bear\nComment=PE file analyser and editor\nExec=pebear %f\nIcon=application-x-executable\nTerminal=false\nType=Application\nCategories=Utility;Development;\nMimeType=application/x-dosexec;\n' | sudo tee /usr/local/share/applications/pebear.desktop > /dev/null"
+      - "sudo update-desktop-database /usr/local/share/applications 2>/dev/null || true"

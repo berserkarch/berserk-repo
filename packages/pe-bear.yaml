@@ -1,0 +1,9 @@
+tools:
+  - name: pebear
+    description: "Cross-platform PE file analyser and editor for static malware analysis"
+    category: [reversing, malware-dev]
+    profiles: [reversing]
+    installer: custom
+    steps:
+      - "wget -O /tmp/pebear $(curl -s https://api.github.com/repos/hasherezade/pe-bear/releases/latest | jq -r '.assets[] | select(.name | endswith(\".AppImage\")) | .browser_download_url')"
+      - "chmod +x /tmp/pebear && sudo mv /tmp/pebear /usr/local/bin/"

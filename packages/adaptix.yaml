@@ -1,0 +1,24 @@
+tools:
+  - name: adaptixc2
+    description: "Adaptix is a modular post-exploitation and adversarial emulation framework with a Qt6 GUI client, extensible via extenders, designed for authorised red team engagements."
+    category: [c2, post-exploitation, malware-dev]
+    profiles: [c2, red-team]
+    installer: custom
+    depends:
+      arch: [make, cmake, openssl, libxkbcommon, qt6-base, qt6-websockets, qt6-declarative, mingw-w64]
+    steps:
+      - "sudo rm -rf /opt/adaptixc2"
+      - "sudo git clone https://github.com/Adaptix-Framework/AdaptixC2.git /opt/adaptixc2"
+      - "sudo chown -R $USER:$USER /opt/adaptixc2"
+      - "cd /opt/adaptixc2 && make all"
+      - "cd /opt/adaptixc2/dist/"
+      - "openssl req -x509 -nodes -newkey rsa:2048 -keyout /opt/adaptixc2/dist/server.rsa.key -out /opt/adaptixc2/dist/server.rsa.crt -days 3650 -subj '/'"
+      - "sed -i 's|extenders/|/opt/adaptixc2/dist/extenders/|' /opt/adaptixc2/dist/profile.yaml"
+      - "sed -i 's|server.rsa.crt|/opt/adaptixc2/dist/server.rsa.crt|' /opt/adaptixc2/dist/profile.yaml"
+      - "sed -i 's|server.rsa.key|/opt/adaptixc2/dist/server.rsa.key|' /opt/adaptixc2/dist/profile.yaml"
+      - "sed -i 's|404page.html|/opt/adaptixc2/dist/404page.html|' /opt/adaptixc2/dist/profile.yaml"
+      - "sudo mv /opt/adaptixc2/dist/adaptixserver /usr/local/bin/"
+      - "sudo mv /opt/adaptixc2/dist/AdaptixClient /usr/local/bin/adaptixclient"
+      - "sudo mkdir -p /usr/local/share/applications"
+      - "printf '[Desktop Entry]\nName=Adaptix C2\nComment=Extensible post-exploitation framework with Qt6 GUI client\nExec=adaptixclient %f\nIcon=application-x-executable\nTerminal=false\nType=Application\nCategories=Security;Network;\n' | sudo tee /usr/local/share/applications/adaptixc2.desktop > /dev/null"
+      - "sudo update-desktop-database /usr/local/share/applications 2>/dev/null || true"

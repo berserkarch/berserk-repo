@@ -1,0 +1,15 @@
+tools:
+  - name: caido-cli
+    description: "A lightweight web security auditing toolkit (CLI)."
+    category: [web]
+    installer: custom
+    depends:
+      arch:
+        - glibc
+        - gcc-libs
+    steps:
+      - 'wget "$(curl -s https://api.github.com/repos/caido/caido/releases/latest | jq -r ''.body'' | grep -o ''https://[^)]*caido-cli-[^)]*linux-x86_64.tar.gz'')" -O /tmp/caido-cli.tar.gz'
+      - "rm -rf /tmp/caido-cli && mkdir -p /tmp/caido-cli"
+      - "tar -xzf /tmp/caido-cli.tar.gz -C /tmp/caido-cli"
+      - "sudo install -m 755 \"$(find /tmp/caido-cli -type f -name 'caido-cli' | head -n1)\" /usr/local/bin/caido-cli"
+      - "rm -rf /tmp/caido-cli /tmp/caido-cli.tar.gz"

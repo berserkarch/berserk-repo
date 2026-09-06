@@ -1,0 +1,6 @@
+tools:
+  - name: opencode
+    description: "OpenCode is an open source agent that helps you write code in your terminal, IDE, or desktop."
+    category: [llm]
+    installer: custom
+    steps: ["curl -fsSL https://opencode.ai/install | bash"]
